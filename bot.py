@@ -45,6 +45,7 @@ class Bot(Client):
         temp.B_NAME = me.first_name
         self.username = '@' + me.username
         self.uptime = datetime.now()
+        TIMEZONE = ("Asia/Kolkata")
         curr = datetime.now(timezone(TIMEZONE))
         date = curr.strftime('%d %B, %Y')
         time = curr.strftime('%I:%M:%S %p')
