@@ -18,6 +18,7 @@ from pyrogram import types
 from Script import script 
 from datetime import date, datetime 
 import pytz
+from pytz import timezone
 
 class Bot(Client):
 
