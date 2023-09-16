@@ -6,7 +6,7 @@ COPY requirements.txt /requirements.txt
 
 RUN cd /
 RUN pip3 install -U pip && pip3 install -U -r requirements.txt
-RUN mkdir /DQTheFileDonor
-WORKDIR /DQTheFileDonor
+RUN mkdir /DS_Verify_Filter
+WORKDIR /DS_Verify_Filter
 COPY start.sh /start.sh
 CMD ["/bin/bash", "/start.sh"]
