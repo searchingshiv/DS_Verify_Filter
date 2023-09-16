@@ -50,11 +50,22 @@ class Bot(Client):
         today = date.today()
         now = datetime.now(tz)
         time = now.strftime("%H:%M:%S %p")
-        await self.send_message(chat_id=LOG_CHANNEL, text=script.RESTART_TXT.format(today, time))
+        if LOG_CHANNEL:
+            try:
+                await self.send_message(LOG_CHANNEL, text=f"<b>{me.mention} Rᴇsᴛᴀʀᴛᴇᴅ !!\n\n📅 Dᴀᴛᴇ : <code>{date}</code>\n⏰ Tɪᴍᴇ : <code>{time}</code>\n🌐 Tɪᴍᴇᴢᴏɴᴇ : <code>{TIMEZONE}</code>\n\n🉐 Vᴇʀsɪᴏɴ : <code>v{__version__}</code></b>")
+            except Unauthorized:
+                LOGGER.warning("Bot isn't able to send message to LOG_CHANNEL")
+            except BadRequest as e:
+                LOGGER.error(e)
 
     async def stop(self, *args):
         await super().stop()
         logging.info("Bot stopped. Bye.")
+        #await self.send_message(chat_id=LOG_CHANNEL, text=script.RESTART_TXT.format(today, time))
+
+#    async def stop(self, *args):
+ #       await super().stop()
+  #      logging.info("Bot stopped. Bye.")
 
     async def iter_messages(
         self,
